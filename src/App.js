@@ -39,7 +39,7 @@ function App() {
         setLoading(true);
         for(let p of results) {
             let picUrl = await axios.get(p.url);
-            ps.push(picUrl.data.sprites.other.home.front_default);
+            ps.push(picUrl.data.sprites.front_default);
         }
         setLoading(false);
         return setPokemonPic(ps);
