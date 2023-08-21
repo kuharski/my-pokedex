@@ -1,27 +1,26 @@
 import React from 'react'
 
 
-export default function PokemonList({ pokemon, loading }) {
-    
-    if(loading) {
+export default function PokemonList({ singlePokemon, pokemon, loading }) {
         return (
-            <div className='flex flex-col justify-center align-middle h-[43.5rem] md:h-[48.5rem] w-full bg-slate-100'>
-                <div className="flex justify-center">
-                    <img alt="loading" src={process.env.PUBLIC_URL + '/pokeball.png'} className="w-16 h-16 animate-spin" />
-                </div>
-            </div>
-        );
-    } else {
-        return (
-            <div className='flex justify-center mt-10 mb-4'>
+            <div className='flex justify-center mt-4 mb-6'>
                 <ul>
-                    {pokemon.map((name) => (
-                        <li key={name} className='text-base md:text-lg lg:text-xl text-center py-1'>
-                            {name}
-                        </li>
-                    ))}
+                    {pokemon.map((p, i) => {
+                        return (
+                            <div className='flex flex-row justify-between align-middle ml-6'>
+
+                                    <div className='flex flex-col justify-center mr-4'>
+                                        <li key={p.name} className='font-["Tektur"] font-semibold text-lg md:text-xl lg:text-2xl text-center'>
+                                            {p.name} 
+                                        </li>
+                                    </div>
+                                    <img alt={p.name} src={singlePokemon[i]} className='w-24 md:w-28'/>
+
+                            </div>
+                        );
+                    })}
                 </ul>
             </div>
         );
     }
-}
+//}
