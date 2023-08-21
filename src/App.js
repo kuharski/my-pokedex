@@ -4,13 +4,12 @@ import axios from "axios";
 import Pagination from "./Pagination";
 
 function App() {
-  const [pokemon, setPokemon] = useState([]);
-  const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=6&offset=0');
-  const [nextPageUrl, setNextPageUrl] = useState();
-  const [prevPageUrl, setPrevPageUrl] = useState();
-  const [loading, setLoading] = useState(true);
-
-  const [pokemonPic, setPokemonPic] = useState([]);
+    const [pokemon, setPokemon] = useState([]);
+    const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=6&offset=0');
+    const [nextPageUrl, setNextPageUrl] = useState();
+    const [prevPageUrl, setPrevPageUrl] = useState();
+    const [loading, setLoading] = useState(true);
+    const [pokemonPic, setPokemonPic] = useState([]);
 
     function formatName(results) {
         return results.map((p) => {
@@ -34,7 +33,6 @@ function App() {
     }
 
     async function getPictureData(results) {
-        // i want an array of url's 
         let ps = [];
         setLoading(true);
         for(let p of results) {
@@ -61,50 +59,49 @@ function App() {
     })
 
     return () => cancel;
-  }, [currentPageUrl]);
+    }, [currentPageUrl]);
 
-  function goToNextPage() {
-    setCurrentPageUrl(nextPageUrl);
-  }
+    function goToNextPage() {
+        setCurrentPageUrl(nextPageUrl);
+    }
 
-  function goToPrevPage() {
-    setCurrentPageUrl(prevPageUrl);
-  }
+    function goToPrevPage() {
+        setCurrentPageUrl(prevPageUrl);
+    }
 
-  if(loading) {
-    return (
-        <div className='flex flex-col justify-center bg-slate-100 h-screen'>
-            <div className="flex flex-row justify-center mt-8">
-                <div className="flex flex-col justify-center mr-4">
-                    <h1 className='text-center font-["Tektur"] font-bold text-4xl md:text-6xl lg:text-7xl'>My Pok&#233;dex</h1>
+    if(loading) {
+        return (
+            <div className='flex flex-col justify-center bg-slate-100 h-screen'>
+                <div className="flex flex-row justify-center mt-8">
+                    <div className="flex flex-col justify-center mr-4">
+                        <h1 className='text-center font-["Tektur"] font-bold text-4xl md:text-6xl lg:text-7xl'>My Pok&#233;dex</h1>
+                    </div>
+                    <img alt='pokedex' src={process.env.PUBLIC_URL + '/pokedex.png'} className='w-16 md:w-20 lg:w-24' />
                 </div>
-                <img alt='pokedex' src={process.env.PUBLIC_URL + '/pokedex.png'} className='w-16 md:w-20 lg:w-24' />
-            </div>
-            <div className='flex flex-col justify-center align-middle h-[43.5rem] md:h-[48.5rem] w-full bg-slate-100'>
-                <div className="flex justify-center">
-                    <img alt="loading" src={process.env.PUBLIC_URL + '/pokeball.png'} className="w-16 h-16 animate-spin" />
+                <div className='flex flex-col justify-center align-middle h-[43.5rem] md:h-[48.5rem] w-full bg-slate-100'>
+                    <div className="flex justify-center">
+                        <img alt="loading" src={process.env.PUBLIC_URL + '/pokeball.png'} className="w-16 h-16 animate-spin" />
+                    </div>
                 </div>
             </div>
-        </div>
-    );
-  } else {
-    return (
-        <div className='flex flex-col justify-center bg-slate-100 min-h-screen'>
-            <div className="flex flex-row justify-center mt-8">
-                <div className="flex flex-col justify-center mr-4">
-                    <h1 className='text-center font-["Tektur"] font-bold text-4xl md:text-6xl lg:text-7xl'>My Pok&#233;dex</h1>
+        );
+    } else {
+        return (
+            <div className='flex flex-col justify-center bg-slate-100 min-h-screen'>
+                <div className="flex flex-row justify-center mt-8">
+                    <div className="flex flex-col justify-center mr-4">
+                        <h1 className='text-center font-["Tektur"] font-bold text-4xl md:text-6xl lg:text-7xl'>My Pok&#233;dex</h1>
+                    </div>
+                    <img alt='pokedex' src={process.env.PUBLIC_URL + '/pokedex.png'} className='w-16 md:w-20 lg:w-24' />
                 </div>
-                <img alt='pokedex' src={process.env.PUBLIC_URL + '/pokedex.png'} className='w-16 md:w-20 lg:w-24' />
+                <PokemonList singlePokemon={pokemonPic} pokemon={pokemon} loading={loading} />
+                <Pagination 
+                goToNextPage={nextPageUrl ? goToNextPage : null}
+                goToPrevPage={prevPageUrl ? goToPrevPage : null}
+                />
             </div>
-            <PokemonList singlePokemon={pokemonPic} pokemon={pokemon} loading={loading} />
-            <Pagination 
-            goToNextPage={nextPageUrl ? goToNextPage : null}
-            goToPrevPage={prevPageUrl ? goToPrevPage : null}
-            />
-        </div>
-      );
-  }
-
+        );
+    }
 }
 
 export default App;
