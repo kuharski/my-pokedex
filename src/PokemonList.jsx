@@ -5,7 +5,7 @@ export default function PokemonList({ pokemon, loading }) {
     
     if(loading) {
         return (
-            <div className='flex flex-col justify-center align-middle h-[43.5rem] md:h-[48.5rem] w-full'>
+            <div className='flex flex-col justify-center align-middle h-[43.5rem] md:h-[48.5rem] w-full bg-slate-100'>
                 <div className="flex justify-center">
                     <img alt="loading" src={process.env.PUBLIC_URL + '/pokeball.png'} className="w-16 h-16 animate-spin" />
                 </div>
