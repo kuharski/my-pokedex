@@ -39,7 +39,7 @@ function App() {
         setLoading(true);
         for(let p of results) {
             let picUrl = await axios.get(p.url);
-            ps.push(picUrl.data.sprites.front_default);
+            ps.push(picUrl.data.sprites.other.home.front_default);
         }
         setLoading(false);
         return setPokemonPic(ps);
@@ -74,7 +74,12 @@ function App() {
   if(loading) {
     return (
         <div className='flex flex-col justify-center bg-slate-100 h-screen'>
-            <h1 className='mt-14 text-center font-["Tektur"] font-bold text-5xl md:text-6xl lg:text-7xl'>My Pok&#233;dex</h1>
+            <div className="flex flex-row justify-center mt-8">
+                <div className="flex flex-col justify-center mr-4">
+                    <h1 className='text-center font-["Tektur"] font-bold text-4xl md:text-6xl lg:text-7xl'>My Pok&#233;dex</h1>
+                </div>
+                <img alt='pokedex' src={process.env.PUBLIC_URL + '/pokedex.png'} className='w-16 md:w-20 lg:w-24' />
+            </div>
             <div className='flex flex-col justify-center align-middle h-[43.5rem] md:h-[48.5rem] w-full bg-slate-100'>
                 <div className="flex justify-center">
                     <img alt="loading" src={process.env.PUBLIC_URL + '/pokeball.png'} className="w-16 h-16 animate-spin" />
@@ -85,7 +90,12 @@ function App() {
   } else {
     return (
         <div className='flex flex-col justify-center bg-slate-100 min-h-screen'>
-            <h1 className='text-center font-["Tektur"] font-bold text-5xl md:text-6xl lg:text-7xl'>My Pok&#233;dex</h1>
+            <div className="flex flex-row justify-center mt-8">
+                <div className="flex flex-col justify-center mr-4">
+                    <h1 className='text-center font-["Tektur"] font-bold text-4xl md:text-6xl lg:text-7xl'>My Pok&#233;dex</h1>
+                </div>
+                <img alt='pokedex' src={process.env.PUBLIC_URL + '/pokedex.png'} className='w-16 md:w-20 lg:w-24' />
+            </div>
             <PokemonList singlePokemon={pokemonPic} pokemon={pokemon} loading={loading} />
             <Pagination 
             goToNextPage={nextPageUrl ? goToNextPage : null}
