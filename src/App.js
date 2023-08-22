@@ -9,7 +9,7 @@ function App() {
     const [nextPageUrl, setNextPageUrl] = useState();
     const [prevPageUrl, setPrevPageUrl] = useState();
     const [loading, setLoading] = useState(true);
-    const [pokemonPic, setPokemonPic] = useState([]);
+    const [pokemonInfo, setPokemonInfo] = useState([]);
 
     function formatName(results) {
         return results.map((p) => {
@@ -36,11 +36,12 @@ function App() {
         let ps = [];
         setLoading(true);
         for(let p of results) {
-            let picUrl = await axios.get(p.url);
-            ps.push(picUrl.data.sprites.other.home.front_default);
+            let infoUrl = await axios.get(p.url);
+            // .sprites.other.home.front_default
+            ps.push(infoUrl.data);
         }
         setLoading(false);
-        return setPokemonPic(ps);
+        return setPokemonInfo(ps);
     }
 
     useEffect(() => {
@@ -94,7 +95,7 @@ function App() {
                     </div>
                     <img alt='pokedex' src={process.env.PUBLIC_URL + '/pokedex.png'} className='w-16 md:w-20 lg:w-24' />
                 </div>
-                <PokemonList singlePokemon={pokemonPic} pokemon={pokemon} loading={loading} />
+                <PokemonList singlePokemon={pokemonInfo} pokemon={pokemon} loading={loading} />
                 <Pagination 
                 goToNextPage={nextPageUrl ? goToNextPage : null}
                 goToPrevPage={prevPageUrl ? goToPrevPage : null}
