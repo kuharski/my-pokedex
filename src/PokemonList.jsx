@@ -3,10 +3,9 @@ import Popup from 'reactjs-popup';
 
 export default function PokemonList({ singlePokemon, pokemon }) {
     function toUpper(type) {
-
         return type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
     }
-    
+
     return (
         <div className='flex justify-center mt-4 mb-6'>
             <ul>
@@ -56,8 +55,11 @@ export default function PokemonList({ singlePokemon, pokemon }) {
                                             <p className='pb-[0.1rem]'>HP&nbsp;: {singlePokemon[i].stats[0].base_stat}</p>
                                             <p className='py-[0.1rem]'>Attack&nbsp;: {singlePokemon[i].stats[1].base_stat}</p>
                                             <p className='py-[0.1rem]'>Defense&nbsp;: {singlePokemon[i].stats[2].base_stat}</p>
-                                            <p className='py-[0.1rem]'>Height&nbsp;: {singlePokemon[i].height}</p>
-                                            <p className='py-[0.1rem]'>Weight&nbsp;: {singlePokemon[i].weight}</p>
+                                            <p className='py-[0.1rem]'>Sp.&nbsp;Atk&nbsp;: {singlePokemon[i].stats[3].base_stat}</p>
+                                            <p className='py-[0.1rem]'>Sp.&nbsp;Def&nbsp;: {singlePokemon[i].stats[4].base_stat}</p>
+                                            <p className='py-[0.1rem]'>Speed&nbsp;: {singlePokemon[i].stats[5].base_stat}</p>
+                                            <p className='py-[0.1rem]'>Height&nbsp;: {singlePokemon[i].height / 10} m</p>
+                                            <p className='pt-[0.1rem]'>Weight&nbsp;: {singlePokemon[i].weight / 10} kg</p>
                                         </div>
                                     </div>
                                 </div>)}
