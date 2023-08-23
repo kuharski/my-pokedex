@@ -14,7 +14,7 @@ export default function PokemonList({ singlePokemon, pokemon }) {
                     return (
                         <div className='flex flex-row justify-between align-middle py-1 border-gray-300 border-b-2 hover:cursor-pointer'>
                             <div className='flex flex-col justify-around mr-4'>
-                                <li key={p.name} className='font-["Tektur"] font-semibold text-lg md:text-xl lg:text-2xl text-center'>
+                                <li key={p.name} className='font-["Tektur"] font-semibold text-lg md:text-xl lg:text-2xl text-left'>
                                     {p.name} 
                                 </li>
                                 <Popup trigger={<button className='font-["Tektur"] text-lg md:text-xl lg:text-2xl text-center w-20 md:w-24 lg:w-28 border-2 border-gray-300 rounded hover:bg-red-500 hover:text-white hover:border-black hover:cursor-pointer'>Stats</button>} position="center" modal>
