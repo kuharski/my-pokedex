@@ -37,7 +37,6 @@ function App() {
         setLoading(true);
         for(let p of results) {
             let infoUrl = await axios.get(p.url);
-            // .sprites.other.home.front_default
             ps.push(infoUrl.data);
         }
         setLoading(false);
@@ -73,7 +72,7 @@ function App() {
     if(loading) {
         return (
             <div className='flex flex-col justify-center bg-slate-100 h-screen'>
-                <div className="flex flex-row justify-center mt-8">
+                <div className="flex flex-row justify-center mt-16 md:mt-20 lg:mt-24">
                     <div className="flex flex-col justify-center mr-4">
                         <h1 className='text-center font-["Tektur"] font-bold text-4xl md:text-6xl lg:text-7xl'>My Pok&#233;dex</h1>
                     </div>
@@ -89,7 +88,7 @@ function App() {
     } else {
         return (
             <div className='flex flex-col justify-center bg-slate-100 min-h-screen'>
-                <div className="flex flex-row justify-center mt-8">
+                <div className="flex flex-row justify-center mt-16 md:mt-20 lg:mt-24">
                     <div className="flex flex-col justify-center mr-4">
                         <h1 className='text-center font-["Tektur"] font-bold text-4xl md:text-6xl lg:text-7xl'>My Pok&#233;dex</h1>
                     </div>
