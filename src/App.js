@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 
 function App() {
     const [pokemon, setPokemon] = useState([]);
-    const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0');
+    const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=10&offset=0');
     const [nextPageUrl, setNextPageUrl] = useState();
     const [prevPageUrl, setPrevPageUrl] = useState();
     const [loading, setLoading] = useState(true);
